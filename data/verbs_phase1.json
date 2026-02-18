@@ -1,0 +1,24 @@
+{
+  "verbs": [
+    {"id":"v001","phase":1,"group":"regular","infinitive":"machen","present_sg":{"ich":"mache","du":"machst","er":"macht","sie":"macht","es":"macht","Sie":"machen"}},
+    {"id":"v002","phase":1,"group":"regular","infinitive":"lernen","present_sg":{"ich":"lerne","du":"lernst","er":"lernt","sie":"lernt","es":"lernt","Sie":"lernen"}},
+    {"id":"v003","phase":1,"group":"regular","infinitive":"spielen","present_sg":{"ich":"spiele","du":"spielst","er":"spielt","sie":"spielt","es":"spielt","Sie":"spielen"}},
+    {"id":"v004","phase":1,"group":"regular","infinitive":"arbeiten","present_sg":{"ich":"arbeite","du":"arbeitest","er":"arbeitet","sie":"arbeitet","es":"arbeitet","Sie":"arbeiten"}},
+    {"id":"v005","phase":1,"group":"regular","infinitive":"wohnen","present_sg":{"ich":"wohne","du":"wohnst","er":"wohnt","sie":"wohnt","es":"wohnt","Sie":"wohnen"}},
+    {"id":"v006","phase":1,"group":"regular","infinitive":"leben","present_sg":{"ich":"lebe","du":"lebst","er":"lebt","sie":"lebt","es":"lebt","Sie":"leben"}},
+    {"id":"v007","phase":1,"group":"regular","infinitive":"kaufen","present_sg":{"ich":"kaufe","du":"kaufst","er":"kauft","sie":"kauft","es":"kauft","Sie":"kaufen"}},
+    {"id":"v008","phase":1,"group":"regular","infinitive":"fragen","present_sg":{"ich":"frage","du":"fragst","er":"fragt","sie":"fragt","es":"fragt","Sie":"fragen"}},
+    {"id":"v009","phase":1,"group":"regular","infinitive":"antworten","present_sg":{"ich":"antworte","du":"antwortest","er":"antwortet","sie":"antwortet","es":"antwortet","Sie":"antworten"}},
+    {"id":"v010","phase":1,"group":"regular","infinitive":"sagen","present_sg":{"ich":"sage","du":"sagst","er":"sagt","sie":"sagt","es":"sagt","Sie":"sagen"}},
+    {"id":"v011","phase":1,"group":"regular","infinitive":"hören","present_sg":{"ich":"höre","du":"hörst","er":"hört","sie":"hört","es":"hört","Sie":"hören"}},
+    {"id":"v012","phase":1,"group":"regular","infinitive":"schauen","present_sg":{"ich":"schaue","du":"schaust","er":"schaut","sie":"schaut","es":"schaut","Sie":"schauen"}},
+    {"id":"v013","phase":1,"group":"regular","infinitive":"suchen","present_sg":{"ich":"suche","du":"suchst","er":"sucht","sie":"sucht","es":"sucht","Sie":"suchen"}},
+    {"id":"v014","phase":1,"group":"regular","infinitive":"brauchen","present_sg":{"ich":"brauche","du":"brauchst","er":"braucht","sie":"braucht","es":"braucht","Sie":"brauchen"}},
+    {"id":"v015","phase":1,"group":"regular","infinitive":"besuchen","present_sg":{"ich":"besuche","du":"besuchst","er":"besucht","sie":"besucht","es":"besucht","Sie":"besuchen"}},
+    {"id":"v016","phase":1,"group":"regular-ieren","infinitive":"fotografieren","present_sg":{"ich":"fotografiere","du":"fotografierst","er":"fotografiert","sie":"fotografiert","es":"fotografiert","Sie":"fotografieren"}},
+    {"id":"v017","phase":1,"group":"regular-ieren","infinitive":"telefonieren","present_sg":{"ich":"telefoniere","du":"telefonierst","er":"telefoniert","sie":"telefoniert","es":"telefoniert","Sie":"telefonieren"}},
+    {"id":"v018","phase":1,"group":"regular","infinitive":"planen","present_sg":{"ich":"plane","du":"planst","er":"plant","sie":"plant","es":"plant","Sie":"planen"}},
+    {"id":"v019","phase":1,"group":"regular","infinitive":"öffnen","present_sg":{"ich":"öffne","du":"öffnest","er":"öffnet","sie":"öffnet","es":"öffnet","Sie":"öffnen"}},
+    {"id":"v020","phase":1,"group":"regular","infinitive":"erklären","present_sg":{"ich":"erkläre","du":"erklärst","er":"erklärt","sie":"erklärt","es":"erklärt","Sie":"erklären"}}
+  ]
+}

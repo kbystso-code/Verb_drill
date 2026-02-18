@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Verb-Drill</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="title">Verb-Drill</div>
+    <div class="meta" id="meta">Phase: 1</div>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <div class="row">
+        <button class="btn" id="startBtn">Start</button>
+        <button class="btn btn-ghost" id="resetBtn" title="Neu laden">Reset</button>
+      </div>
+
+      <div class="row">
+        <button class="chip active" id="phase1Btn">Phase 1</button>
+        <button class="chip" id="phase2Btn" disabled>Phase 2</button>
+        <button class="chip" id="phase3Btn" disabled>Phase 3</button>
+      </div>
+
+      <div class="stats">
+        <div>Set: <span id="setInfo">-</span></div>
+        <div>Q: <span id="qInfo">-</span></div>
+        <div>Score: <span id="scoreInfo">0</span></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="label">Satz</div>
+      <div class="sentence" id="sentence">Start drücken</div>
+
+      <div class="choices" id="choices"></div>
+
+      <div class="feedback" id="feedback"></div>
+
+      <div class="row row-right">
+        <button class="btn" id="nextBtn" disabled>Next</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>Single (ich/du/er/sie/es/Sie) · 20 Verben · 6 Fragen pro Verb</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
