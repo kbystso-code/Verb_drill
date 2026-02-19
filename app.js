@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Verb-Drill (Phase 1) — FIXED: use JSON ich-templates for ALL pronouns
+ * Verb-Drill — Phase switchable (Phase 1 & Phase 2 ready)
  * - 20 verbs per session (random sample)
  * - For each verb:
  *   - pronouns: ich, du, er, sie(3sg), es, Sie (6)
@@ -14,9 +14,10 @@
  *   - sie(3sg) pronoun must not be sentence-initial -> auto rearrange when needed
  */
 
-const DATA = {
-  verbsUrl: './data/verbs_phase1.json',
-  templatesUrl: './data/templates_phase1.json',
+const DATA_BY_PHASE = {
+  1: { verbsUrl: './data/verbs_phase1.json', templatesUrl: './data/templates_phase1.json' },
+  2: { verbsUrl: './data/verbs_phase2.json', templatesUrl: './data/templates_phase2.json' },
+  3: { verbsUrl: './data/verbs_phase3.json', templatesUrl: './data/templates_phase3.json' } // future
 };
 
 const PERSONS_BASE = ['ich', 'du', 'er', 'sie', 'es', 'Sie']; // singular pronouns
@@ -77,11 +78,15 @@ function disableChoices(disabled) {
 }
 
 // ---------- Data loading ----------
-async function loadData() {
+async function loadDataForPhase(phase) {
+  const conf = DATA_BY_PHASE[phase];
+  if (!conf) throw new Error(`Unknown phase: ${phase}`);
+
   const [verbsRes, templatesRes] = await Promise.all([
-    fetch(DATA.verbsUrl, { cache: 'no-store' }),
-    fetch(DATA.templatesUrl, { cache: 'no-store' })
+    fetch(conf.verbsUrl, { cache: 'no-store' }),
+    fetch(conf.templatesUrl, { cache: 'no-store' })
   ]);
+
   if (!verbsRes.ok) throw new Error('verbs JSON load failed');
   if (!templatesRes.ok) throw new Error('templates JSON load failed');
 
@@ -145,49 +150,38 @@ function pickIchTemplateText(verb) {
 }
 
 function derivePronounTemplateFromIch(ichText, person) {
-  // Replace "ich" with target pronoun, keeping capitalization at sentence start.
-  // We only need to handle "Ich" at start + " ich " inside.
   let s = ichText;
 
-  // 1) replace sentence-initial "Ich"
+  // sentence-initial "Ich"
   if (/^Ich\b/.test(s)) {
     if (person === 'ich') s = s.replace(/^Ich\b/, 'Ich');
     else if (person === 'du') s = s.replace(/^Ich\b/, 'Du');
     else if (person === 'er') s = s.replace(/^Ich\b/, 'Er');
     else if (person === 'es') s = s.replace(/^Ich\b/, 'Es');
-    else if (person === 'Sie') s = s.replace(/^Ich\b/, 'Sie'); // formal "Sie" always capital
-    else if (person === 'sie') s = s.replace(/^Ich\b/, 'sie'); // TEMP; will be fixed below to avoid sentence-initial
+    else if (person === 'Sie') s = s.replace(/^Ich\b/, 'Sie'); // formal Sie
+    else if (person === 'sie') s = s.replace(/^Ich\b/, 'sie'); // temporary, will be fixed
   }
 
-  // 2) replace standalone " ich " (and ", ich", etc.)
-  // Use word-boundary to avoid touching other words
+  // replace standalone "ich" (word boundary)
   if (person !== 'ich') {
-    const repl = (person === 'Sie') ? 'Sie' : person; // keep "Sie" capital
+    const repl = (person === 'Sie') ? 'Sie' : person;
     s = s.replace(/\bich\b/g, repl);
   }
 
-  // 3) Special rule: 3sg pronoun "sie" must not be sentence-initial.
-  // If it starts with "sie ___ ..." => rearrange to "Heute ___ sie ..."
-  if (person === 'sie') {
-    s = fixSentenceInitialSie(s);
-  }
+  // 3sg pronoun "sie" must not be sentence-initial
+  if (person === 'sie') s = fixSentenceInitialSie(s);
 
   return s;
 }
 
 function fixSentenceInitialSie(text) {
-  // If starts with "sie ___ ..." or "Sie ___ ..." (accidental), force to "Heute ___ sie ..."
-  // Pattern: "sie ___ REST"
   const m = text.match(/^(sie|Sie)\s+___\s+(.*)$/);
   if (m) {
     const rest = m[2].trim();
     return `Heute ___ sie ${rest}`;
   }
-  // If starts with "sie" but not matching (rare), also move:
   if (/^(sie|Sie)\b/.test(text)) {
-    // fallback: just prepend "Heute" and keep original after removing leading pronoun
     const tail = text.replace(/^(sie|Sie)\b\s*/, '').trim();
-    // Ensure blank exists; if not, keep as-is
     if (tail.includes('___')) return `Heute ${tail}`;
   }
   return text;
@@ -196,9 +190,7 @@ function fixSentenceInitialSie(text) {
 function pickSentenceTemplateForPronoun(verb, person) {
   const ichText = pickIchTemplateText(verb);
 
-  // If JSON has ich template (expected), derive from it
   if (ichText) {
-    // For 'sie' (3sg) we prefer templates that do NOT start with "Ich" to avoid rearrangement
     if (person === 'sie') {
       const candidates = state.templates.filter(t =>
         t.phase === state.phase &&
@@ -216,8 +208,7 @@ function pickSentenceTemplateForPronoun(verb, person) {
     return derivePronounTemplateFromIch(ichText, person);
   }
 
-  // Absolute fallback (should not happen with your current data)
-  // Keep something minimally grammatical
+  // absolute fallback
   if (person === 'sie') return 'Heute ___ sie.';
   if (person === 'Sie') return 'Heute ___ Sie.';
   const cap = person[0].toUpperCase() + person.slice(1);
@@ -235,7 +226,7 @@ function pickNoun3sgTemplate(verb) {
   if (candidates.length > 0) {
     return candidates[Math.floor(Math.random() * candidates.length)];
   }
-  // Safety fallback
+
   const fallbackByKey = {
     er: { subject_text: 'der Mann', text: 'Heute ___ der Mann zu Hause.' },
     sie: { subject_text: 'die Frau', text: 'Heute ___ die Frau zu Hause.' },
@@ -270,14 +261,12 @@ function buildChoices(verb, answerPersonKey) {
   const options = [correct, ...distractors];
   const uniqueOptions = uniq(options);
 
-  // Ensure 4 unique choices
   let i = 0;
   while (uniqueOptions.length < 4 && i < otherPersons.length) {
     const f = forms[otherPersons[i++]];
     if (f && !uniqueOptions.includes(f)) uniqueOptions.push(f);
   }
 
-  // Final safety pad
   const commonWrong = [
     correct.replace(/e$/, ''),
     correct + 't',
@@ -290,10 +279,7 @@ function buildChoices(verb, answerPersonKey) {
     i++;
   }
 
-  return {
-    correct,
-    choices: shuffle(uniqueOptions.slice(0, 4))
-  };
+  return { correct, choices: shuffle(uniqueOptions.slice(0, 4)) };
 }
 
 // ---------- Question flow ----------
@@ -327,7 +313,7 @@ function nextQuestion() {
     label = `${verb.infinitive} · ${item.person}`;
   } else {
     const nounTpl = pickNoun3sgTemplate(verb);
-    answerPersonKey = nounTpl.person_key; // er|sie|es
+    answerPersonKey = nounTpl.person_key;
     templateText = nounTpl.text;
     label = `${verb.infinitive} · ${nounTpl.subject_text}`;
   }
@@ -397,23 +383,53 @@ function start() {
   buildSession();
   nextQuestion();
 }
-function reset() {
-  window.location.reload();
-}
-function setPhase(p) {
+function reset() { window.location.reload(); }
+
+// Phase switch: load JSON and reset to Start
+async function setPhase(p) {
   state.phase = p;
+
   [phase1Btn, phase2Btn, phase3Btn].forEach(btn => btn.classList.remove('active'));
   if (p === 1) phase1Btn.classList.add('active');
   if (p === 2) phase2Btn.classList.add('active');
   if (p === 3) phase3Btn.classList.add('active');
+
   meta.textContent = `Phase: ${state.phase}`;
+
+  setFeedback('データ読み込み中…', null);
+  startBtn.disabled = true;
+  nextBtn.disabled = true;
+
+  try {
+    await loadDataForPhase(state.phase);
+
+    // Reset state and wait for Start
+    state.sessionVerbIds = [];
+    state.queue = [];
+    state.current = null;
+    state.correctCount = 0;
+    state.totalCount = 0;
+    state.setIndex = 0;
+    state.withinSetIndex = 0;
+    state.locked = false;
+
+    sentenceEl.textContent = 'Start drücken';
+    choicesEl.innerHTML = '';
+    setFeedback('', null);
+
+    startBtn.disabled = false;
+    updateHeader();
+  } catch (e) {
+    console.error(e);
+    setFeedback('データ読み込みに失敗しました（JSONファイル名/パスを確認）', 'ng');
+  }
 }
 
 // ---------- Init ----------
 async function init() {
   setFeedback('データ読み込み中…', null);
   try {
-    await loadData();
+    await loadDataForPhase(state.phase);
     setFeedback('', null);
   } catch (e) {
     console.error(e);
@@ -426,7 +442,13 @@ async function init() {
   resetBtn.addEventListener('click', reset);
 
   phase1Btn.addEventListener('click', () => setPhase(1));
-  // Phase2/3: later enable
+
+  phase2Btn.disabled = false;
+  phase2Btn.addEventListener('click', () => setPhase(2));
+
+  // Phase3: later enable when JSON exists
+  // phase3Btn.disabled = false;
+  // phase3Btn.addEventListener('click', () => setPhase(3));
 }
 
 init();

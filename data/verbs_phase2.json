@@ -1,0 +1,24 @@
+{
+  "verbs": [
+    {"id":"v201","phase":2,"group":"irregular","infinitive":"sein","present_sg":{"ich":"bin","du":"bist","er":"ist","sie":"ist","es":"ist","Sie":"sind"}},
+    {"id":"v202","phase":2,"group":"irregular","infinitive":"haben","present_sg":{"ich":"habe","du":"hast","er":"hat","sie":"hat","es":"hat","Sie":"haben"}},
+    {"id":"v203","phase":2,"group":"irregular","infinitive":"werden","present_sg":{"ich":"werde","du":"wirst","er":"wird","sie":"wird","es":"wird","Sie":"werden"}},
+    {"id":"v204","phase":2,"group":"irregular","infinitive":"gehen","present_sg":{"ich":"gehe","du":"gehst","er":"geht","sie":"geht","es":"geht","Sie":"gehen"}},
+    {"id":"v205","phase":2,"group":"irregular","infinitive":"kommen","present_sg":{"ich":"komme","du":"kommst","er":"kommt","sie":"kommt","es":"kommt","Sie":"kommen"}},
+    {"id":"v206","phase":2,"group":"irregular","infinitive":"geben","present_sg":{"ich":"gebe","du":"gibst","er":"gibt","sie":"gibt","es":"gibt","Sie":"geben"}},
+    {"id":"v207","phase":2,"group":"irregular","infinitive":"nehmen","present_sg":{"ich":"nehme","du":"nimmst","er":"nimmt","sie":"nimmt","es":"nimmt","Sie":"nehmen"}},
+    {"id":"v208","phase":2,"group":"irregular","infinitive":"sehen","present_sg":{"ich":"sehe","du":"siehst","er":"sieht","sie":"sieht","es":"sieht","Sie":"sehen"}},
+    {"id":"v209","phase":2,"group":"irregular","infinitive":"lesen","present_sg":{"ich":"lese","du":"liest","er":"liest","sie":"liest","es":"liest","Sie":"lesen"}},
+    {"id":"v210","phase":2,"group":"irregular","infinitive":"sprechen","present_sg":{"ich":"spreche","du":"sprichst","er":"spricht","sie":"spricht","es":"spricht","Sie":"sprechen"}},
+    {"id":"v211","phase":2,"group":"irregular","infinitive":"essen","present_sg":{"ich":"esse","du":"isst","er":"isst","sie":"isst","es":"isst","Sie":"essen"}},
+    {"id":"v212","phase":2,"group":"irregular","infinitive":"trinken","present_sg":{"ich":"trinke","du":"trinkst","er":"trinkt","sie":"trinkt","es":"trinkt","Sie":"trinken"}},
+    {"id":"v213","phase":2,"group":"irregular","infinitive":"fahren","present_sg":{"ich":"fahre","du":"fährst","er":"fährt","sie":"fährt","es":"fährt","Sie":"fahren"}},
+    {"id":"v214","phase":2,"group":"irregular","infinitive":"schlafen","present_sg":{"ich":"schlafe","du":"schläfst","er":"schläft","sie":"schläft","es":"schläft","Sie":"schlafen"}},
+    {"id":"v215","phase":2,"group":"irregular","infinitive":"laufen","present_sg":{"ich":"laufe","du":"läufst","er":"läuft","sie":"läuft","es":"läuft","Sie":"laufen"}},
+    {"id":"v216","phase":2,"group":"irregular","infinitive":"finden","present_sg":{"ich":"finde","du":"findest","er":"findet","sie":"findet","es":"findet","Sie":"finden"}},
+    {"id":"v217","phase":2,"group":"irregular","infinitive":"denken","present_sg":{"ich":"denke","du":"denkst","er":"denkt","sie":"denkt","es":"denkt","Sie":"denken"}},
+    {"id":"v218","phase":2,"group":"irregular","infinitive":"wissen","present_sg":{"ich":"weiß","du":"weißt","er":"weiß","sie":"weiß","es":"weiß","Sie":"wissen"}},
+    {"id":"v219","phase":2,"group":"irregular","infinitive":"können","present_sg":{"ich":"kann","du":"kannst","er":"kann","sie":"kann","es":"kann","Sie":"können"}},
+    {"id":"v220","phase":2,"group":"irregular","infinitive":"müssen","present_sg":{"ich":"muss","du":"musst","er":"muss","sie":"muss","es":"muss","Sie":"müssen"}}
+  ]
+}
