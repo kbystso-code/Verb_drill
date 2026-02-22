@@ -34,3 +34,33 @@ body{ margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helveti
 .feedback.ng{ color:var(--ng); }
 
 .footer{ text-align:center; color:var(--muted); padding:10px 0 16px; }
+
+/* Topbar: title | launcher | meta */
+.topbar{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Phase表示を右へ */
+.topbar .meta{
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* Launcher button */
+.launcherBtn{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.06);
+  color: inherit;
+  text-decoration: none;
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
+}
