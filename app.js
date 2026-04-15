@@ -39,6 +39,9 @@ let state = {
   locked: false
 };
 
+const KIDS_APP_PROGRESS_KEY = 'kids-app-study-progress-v1';
+const KIDS_APP_APP_ID = 'verb';
+
 // ---------- DOM ----------
 const $ = (id) => document.getElementById(id);
 const startBtn = $('startBtn');
@@ -136,6 +139,31 @@ function updateHeader() {
   setInfo.textContent = `${setNo}/${SESSION_VERB_COUNT}`;
   qInfo.textContent = `${qNo}/${SESSION_VERB_COUNT * QUESTIONS_PER_VERB}`;
   scoreInfo.textContent = `${state.correctCount}/${state.totalCount}`;
+  reportKidsAppProgress(state.correctCount);
+}
+
+function getKidsAppTodayKey() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+function reportKidsAppProgress(correctCount) {
+  try {
+    const today = getKidsAppTodayKey();
+    const raw = JSON.parse(localStorage.getItem(KIDS_APP_PROGRESS_KEY) || '{}');
+    raw[today] ??= {};
+
+    const prev = Number(raw[today][KIDS_APP_APP_ID]?.correct) || 0;
+    raw[today][KIDS_APP_APP_ID] = {
+      correct: Math.max(prev, Math.max(0, Math.floor(Number(correctCount) || 0))),
+      updatedAt: new Date().toISOString()
+    };
+
+    localStorage.setItem(KIDS_APP_PROGRESS_KEY, JSON.stringify(raw));
+  } catch {}
 }
 
 // ---------- Templates: choose ich template then derive pronoun template ----------
