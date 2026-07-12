@@ -1,0 +1,24 @@
+{
+  "verbs": [
+    {"id":"v301","phase":3,"group":"separable","prefix":"auf","infinitive":"aufstehen","present_sg":{"ich":"stehe","du":"stehst","er":"steht","sie":"steht","es":"steht","Sie":"stehen"}},
+    {"id":"v302","phase":3,"group":"separable","prefix":"ein","infinitive":"einkaufen","present_sg":{"ich":"kaufe","du":"kaufst","er":"kauft","sie":"kauft","es":"kauft","Sie":"kaufen"}},
+    {"id":"v303","phase":3,"group":"separable","prefix":"auf","infinitive":"aufräumen","present_sg":{"ich":"räume","du":"räumst","er":"räumt","sie":"räumt","es":"räumt","Sie":"räumen"}},
+    {"id":"v304","phase":3,"group":"separable","prefix":"auf","infinitive":"aufmachen","present_sg":{"ich":"mache","du":"machst","er":"macht","sie":"macht","es":"macht","Sie":"machen"}},
+    {"id":"v305","phase":3,"group":"separable","prefix":"zu","infinitive":"zumachen","present_sg":{"ich":"mache","du":"machst","er":"macht","sie":"macht","es":"macht","Sie":"machen"}},
+    {"id":"v306","phase":3,"group":"separable","prefix":"an","infinitive":"anrufen","present_sg":{"ich":"rufe","du":"rufst","er":"ruft","sie":"ruft","es":"ruft","Sie":"rufen"}},
+    {"id":"v307","phase":3,"group":"separable","prefix":"zu","infinitive":"zuhören","present_sg":{"ich":"höre","du":"hörst","er":"hört","sie":"hört","es":"hört","Sie":"hören"}},
+    {"id":"v308","phase":3,"group":"separable","prefix":"mit","infinitive":"mitkommen","present_sg":{"ich":"komme","du":"kommst","er":"kommt","sie":"kommt","es":"kommt","Sie":"kommen"}},
+    {"id":"v309","phase":3,"group":"separable","prefix":"mit","infinitive":"mitmachen","present_sg":{"ich":"mache","du":"machst","er":"macht","sie":"macht","es":"macht","Sie":"machen"}},
+    {"id":"v310","phase":3,"group":"separable","prefix":"ab","infinitive":"abholen","present_sg":{"ich":"hole","du":"holst","er":"holt","sie":"holt","es":"holt","Sie":"holen"}},
+    {"id":"v311","phase":3,"group":"separable","prefix":"vor","infinitive":"vorbereiten","present_sg":{"ich":"bereite","du":"bereitest","er":"bereitet","sie":"bereitet","es":"bereitet","Sie":"bereiten"}},
+    {"id":"v312","phase":3,"group":"separable","prefix":"ein","infinitive":"einpacken","present_sg":{"ich":"packe","du":"packst","er":"packt","sie":"packt","es":"packt","Sie":"packen"}},
+    {"id":"v313","phase":3,"group":"separable","prefix":"aus","infinitive":"auspacken","present_sg":{"ich":"packe","du":"packst","er":"packt","sie":"packt","es":"packt","Sie":"packen"}},
+    {"id":"v314","phase":3,"group":"separable","prefix":"an","infinitive":"ankommen","present_sg":{"ich":"komme","du":"kommst","er":"kommt","sie":"kommt","es":"kommt","Sie":"kommen"}},
+    {"id":"v315","phase":3,"group":"separable","prefix":"weg","infinitive":"weggehen","present_sg":{"ich":"gehe","du":"gehst","er":"geht","sie":"geht","es":"geht","Sie":"gehen"}},
+    {"id":"v316","phase":3,"group":"separable","prefix":"los","infinitive":"losgehen","present_sg":{"ich":"gehe","du":"gehst","er":"geht","sie":"geht","es":"geht","Sie":"gehen"}},
+    {"id":"v317","phase":3,"group":"separable","prefix":"ein","infinitive":"einsteigen","present_sg":{"ich":"steige","du":"steigst","er":"steigt","sie":"steigt","es":"steigt","Sie":"steigen"}},
+    {"id":"v318","phase":3,"group":"separable","prefix":"aus","infinitive":"aussteigen","present_sg":{"ich":"steige","du":"steigst","er":"steigt","sie":"steigt","es":"steigt","Sie":"steigen"}},
+    {"id":"v319","phase":3,"group":"separable","prefix":"auf","infinitive":"aufhören","present_sg":{"ich":"höre","du":"hörst","er":"hört","sie":"hört","es":"hört","Sie":"hören"}},
+    {"id":"v320","phase":3,"group":"separable","prefix":"zurück","infinitive":"zurückkommen","present_sg":{"ich":"komme","du":"kommst","er":"kommt","sie":"kommt","es":"kommt","Sie":"kommen"}}
+  ]
+}

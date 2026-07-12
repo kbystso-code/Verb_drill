@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Verb-Drill — Phase switchable (Phase 1 & Phase 2 ready)
+ * Verb-Drill — Phase switchable (Phase 1, Phase 2 & Phase 3 ready)
  * - 20 verbs per session (random sample)
  * - For each verb:
  *   - pronouns: ich, du, er, sie(3sg), es, Sie (6)
@@ -17,7 +17,7 @@
 const DATA_BY_PHASE = {
   1: { verbsUrl: './data/verbs_phase1.json', templatesUrl: './data/templates_phase1.json' },
   2: { verbsUrl: './data/verbs_phase2.json', templatesUrl: './data/templates_phase2.json' },
-  3: { verbsUrl: './data/verbs_phase3.json', templatesUrl: './data/templates_phase3.json' } // future
+  3: { verbsUrl: './data/verbs_phase3.json', templatesUrl: './data/templates_phase3.json' }
 };
 
 const PERSONS_BASE = ['ich', 'du', 'er', 'sie', 'es', 'Sie']; // singular pronouns
@@ -474,9 +474,8 @@ async function init() {
   phase2Btn.disabled = false;
   phase2Btn.addEventListener('click', () => setPhase(2));
 
-  // Phase3: later enable when JSON exists
-  // phase3Btn.disabled = false;
-  // phase3Btn.addEventListener('click', () => setPhase(3));
+  phase3Btn.disabled = false;
+  phase3Btn.addEventListener('click', () => setPhase(3));
 }
 
 init();
